@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<body>
+<form role="form" action="/login" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"></input>
+    <div>
+        <label for="email">Email address</label>
+        <input type="email" name="email" id="email">
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password"></input>
+    </div>
+    <div>
+        <label for="remember-me">Remember me</label>
+        <input type="checkbox" name="remember-me" id="remember-me"></input>
+    </div>
+    <button type="submit">Sign in</button>
+</form>
+
+<#if error.isPresent()>
+    <p>The email or password you have entered is invalid, try again.</p>
+</#if>
+</body>
+</html>
