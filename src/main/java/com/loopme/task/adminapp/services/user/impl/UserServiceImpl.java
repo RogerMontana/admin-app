@@ -3,6 +3,8 @@ package com.loopme.task.adminapp.services.user.impl;
 import java.util.Collection;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,20 +39,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Optional<User> getUserByName(String name) {
-		return userRepository.findByName(name);
+	public Optional<User> getByUsername(String name) {
+		return userRepository.findByUsername(name);
 	}
 
 	@Override
 	public Collection<User> getAllUsers() {
-		return userRepository.findAll(new Sort("email"));
+		return userRepository.findAll(new Sort("username"));
 	}
 
 	@Override
+	@Transactional
 	public User create(UserCreateForm form) {
 		User user = new User();
-		user.setEmail(form.getEmail());
+		user.setUsername(form.getUsername());
 		user.setPassword(new BCryptPasswordEncoder().encode(form.getPassword()));
+		user.setEmail(form.getEmail());
+		user.setEnabled(form.isEnabled());
 		user.setRole(form.getRole());
 		return userRepository.save(user);
 	}

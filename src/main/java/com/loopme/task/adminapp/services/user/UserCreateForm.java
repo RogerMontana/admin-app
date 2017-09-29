@@ -15,13 +15,16 @@ public class UserCreateForm {
 	private String email = "";
 
 	@NotEmpty
-	private String password = "";
+	private String username = "";
 
 	@NotEmpty
-	private String passwordRepeated = "";
+	private String password = "";
 
 	@NotNull
 	private UserRole role = UserRole.ADOPS;
+
+	@NotNull
+	private boolean enabled = false;
 
 	public String getEmail() {
 		return email;
@@ -39,14 +42,6 @@ public class UserCreateForm {
 		this.password = password;
 	}
 
-	public String getPasswordRepeated() {
-		return passwordRepeated;
-	}
-
-	public void setPasswordRepeated(String passwordRepeated) {
-		this.passwordRepeated = passwordRepeated;
-	}
-
 	public UserRole getRole() {
 		return role;
 	}
@@ -54,5 +49,22 @@ public class UserCreateForm {
 	public void setRole(UserRole role) {
 		this.role = role;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 
 }

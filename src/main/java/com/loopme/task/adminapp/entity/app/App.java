@@ -36,7 +36,7 @@ public class App {
 	private AppType type;
 
 	@ElementCollection(targetClass = ContentType.class)
-	@CollectionTable(name = "CONTENT_TYPES", joinColumns = @JoinColumn(name = "ID"))
+	@CollectionTable(name = "ContentDAO", joinColumns = @JoinColumn(name = "ID"))
 	@Column(name = "CONTENT_TYPE", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private List<ContentType> contentTypes;
